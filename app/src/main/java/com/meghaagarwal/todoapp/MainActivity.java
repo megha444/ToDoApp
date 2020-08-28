@@ -51,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
         mBannerDay.setText(dayOfTheWeek);
 
         long date = System.currentTimeMillis();
-        SimpleDateFormat sdff = new SimpleDateFormat("MMM MMM dd yyyy, hh::mm a");
+        SimpleDateFormat sdff = new SimpleDateFormat("dd MMMM yyyy");
+        //SimpleDateFormat sdff = new SimpleDateFormat("MMM MMM dd yyyy, hh::mm a");
         String dateString = sdff.format(date);
         mBannerDate.setText(dateString);
 
@@ -95,6 +96,12 @@ public class MainActivity extends AppCompatActivity {
             TextView task_time = (TextView) mView.findViewById(R.id.taskTime);
             task_time.setText(time);
         }
+
+        public void setStatus(String status)
+        {
+            TextView task_status = (TextView) mView.findViewById(R.id.taskStatus);
+            task_status.setText(status);
+        }
     }
 
 
@@ -108,7 +115,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public Task parseSnapshot(@NonNull DataSnapshot snapshot) {
                         return new Task(snapshot.child("name").getValue().toString(),
-                                snapshot.child("time").getValue().toString());
+                                snapshot.child("time").getValue().toString(),
+                                snapshot.child("status").getValue().toString());
                     }
                 }) .build();
 
@@ -117,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull TaskViewHolder taskViewHolder, int i, @NonNull Task task) {
                 taskViewHolder.setName(task.getName());
                 taskViewHolder.setTime(task.getTime());
+                taskViewHolder.setStatus(task.getStatus());
 
                 final String task_key = getRef(i).getKey().toString();
                 taskViewHolder.mView.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +138,27 @@ public class MainActivity extends AppCompatActivity {
                 });
 
             }
+/*
+
+            @Override
+            protected void onBindViewHolder(@NonNull TaskViewHolder taskViewHolder, int i, @NonNull Tasknew task) {
+                taskViewHolder.setName(task.getName());
+                taskViewHolder.setTime(task.getTime());
+                taskViewHolder.setStatus(task.getStatus());
+
+                final String task_key = getRef(i).getKey().toString();
+                taskViewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent singleTaskActivity = new Intent(MainActivity.this, SingleActivityA.class);
+                        singleTaskActivity.putExtra("Task ID", task_key);
+                        startActivity(singleTaskActivity);
+                    }
+                });
+
+            }
+*/
+
 
             @NonNull
             @Override

@@ -30,5 +30,54 @@
             android:layout_marginLeft="30dp"
         />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="To do"
+            android:textSize="17dp"
+            android:textColor="#000000"
+            android:id="@+id/singleStatus"
+            android:layout_marginTop="130dp"
+            android:layout_marginLeft="30dp"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="170dp"
+            android:textColor="#000000"
+            android:textSize="17dp"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/singleNotes"
+            />
+
     </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Task complete"
+            android:id="@+id/bTaskComplete"
+            android:layout_marginLeft="10dp"
+            ></Button>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Remove Task"
+            android:id="@+id/backButton"
+            android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@id/bTaskComplete"></Button>
+
+    </RelativeLayout>
+
 </LinearLayout>
